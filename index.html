@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2eb">
+  <title>Web Development Homework</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f2eb;
+      --ink: #1d2925;
+      --muted: #68746d;
+      --line: #d8ddd5;
+      --green: #315d49;
+      --lime: #d7e77a;
+      --white: #fffefa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px max(24px, calc((100vw - 1120px) / 2));
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .brand { display: flex; align-items: center; gap: 10px; }
+
+    .brand-mark {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      background: var(--green);
+      color: var(--white);
+      font-size: 14px;
+    }
+
+    .topbar-note { color: var(--muted); font-weight: 500; }
+
+    main {
+      width: min(100% - 48px, 1120px);
+      margin: 0 auto;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 32px;
+      padding: 76px 0 52px;
+    }
+
+    .intro-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .student-card {
+      margin-top: 26px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.6);
+      max-width: 420px;
+    }
+
+    .student-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .student-card h2 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 3vw, 30px);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    .student-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .meta-pill {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(49, 93, 73, 0.04);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow, .section-label {
+      margin: 0 0 12px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 650px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 7vw, 76px);
+      font-weight: 400;
+      line-height: 0.99;
+    }
+
+    .intro-copy {
+      max-width: 420px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .count {
+      display: grid;
+      min-width: 116px;
+      min-height: 116px;
+      align-content: center;
+      justify-items: center;
+      border-radius: 50%;
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    .count strong { font-family: Georgia, "Times New Roman", serif; font-size: 38px; font-weight: 400; line-height: 1; }
+    .count span { margin-top: 5px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+
+    .review-note {
+      margin: 0 0 28px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    .review-note strong {
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .assignments { padding-bottom: 72px; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 15px 0;
+      border-top: 1px solid var(--ink);
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .section-label { margin: 0; color: var(--muted); }
+
+    .assignment-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 32px;
+      margin: 0 0 36px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .assignment-list li { border-top: 1px solid var(--line); }
+
+    .assignment-link {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) 24px;
+      align-items: center;
+      gap: 12px;
+      min-height: 62px;
+      text-decoration: none;
+    }
+
+    .assignment-number { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+    .assignment-name { font-size: 15px; font-weight: 700; }
+    .assignment-arrow { color: var(--green); font-size: 20px; text-align: right; transition: transform 160ms ease; }
+
+    .assignment-link:hover .assignment-name { color: var(--green); }
+    .assignment-link:hover .assignment-arrow { transform: translateX(4px); }
+    .assignment-link:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px max(24px, calc((100vw - 1120px) / 2));
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer p { margin: 0; }
+
+    @media (max-width: 640px) {
+      .topbar { padding-top: 16px; padding-bottom: 16px; }
+      main { width: min(100% - 36px, 1120px); }
+      .intro { grid-template-columns: minmax(0, 1fr) 76px; gap: 14px; padding: 52px 0 36px; }
+      h1 { font-size: clamp(40px, 11vw, 60px); }
+      .intro-copy { font-size: 14px; }
+      .count { min-width: 76px; min-height: 76px; }
+      .count strong { font-size: 28px; }
+      .count span { font-size: 9px; }
+      .assignment-list { grid-template-columns: minmax(0, 1fr); column-gap: 0; }
+      .section-heading h2 { font-size: 22px; }
+      footer { padding: 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">W</span><span>WEB DEVELOPMENT</span></div>
+    <span class="topbar-note">Homework portfolio · 2026</span>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Coursework index</p>
+        <h1 id="page-title">Web Development coursework.</h1>
+        <p class="intro-copy">Prepared for review in a simple, easy-to-check format. Each task is grouped by lesson so the professor can browse the work quickly.</p>
+
+        <div class="student-card" aria-label="Student information">
+          <span class="student-label">Student</span>
+          <h2>Muhammadamin</h2>
+          <p>Course: Web Development • Student ID: 202537558</p>
+        </div>
+
+        <div class="intro-details" aria-label="Course summary">
+          <span class="meta-pill">Course: Web Dev</span>
+          <span class="meta-pill">Semester: 2026</span>
+          <span class="meta-pill">Status: Ready</span>
+        </div>
+      </div>
+      <div class="count" aria-label="19 assignments"><strong>19</strong><span>assignments</span></div>
+    </section>
+
+    <p class="review-note"><strong>Professor view:</strong> This homepage is organized by week and includes direct access to every submitted task for quick review.</p>
+
+    <section class="assignments" aria-label="Homework assignments">
+      <div class="section-heading">
+        <h2>Lesson 2</h2>
+        <p class="section-label">8 assignments</p>
+      </div>
+      <ol class="assignment-list">
+        <li><a class="assignment-link" href="2nd_lesson/task1.html"><span class="assignment-number">01</span><span class="assignment-name">Task 1</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="2nd_lesson/task2.html"><span class="assignment-number">02</span><span class="assignment-name">Task 2</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="2nd_lesson/task-3.html"><span class="assignment-number">03</span><span class="assignment-name">Task 3</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="2nd_lesson/task-4.html"><span class="assignment-number">04</span><span class="assignment-name">Task 4</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="2nd_lesson/Task-5.html"><span class="assignment-number">05</span><span class="assignment-name">Task 5</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="2nd_lesson/task-6.html"><span class="assignment-number">06</span><span class="assignment-name">Task 6</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="2nd_lesson/task-7.html"><span class="assignment-number">07</span><span class="assignment-name">Task 7</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="2nd_lesson/task-8.html"><span class="assignment-number">08</span><span class="assignment-name">Task 8</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+      </ol>
+
+      <div class="section-heading">
+        <h2>Lesson 3</h2>
+        <p class="section-label">7 assignments</p>
+      </div>
+      <ol class="assignment-list">
+        <li><a class="assignment-link" href="3rd_lesson/week%203-2/exercise-1.html"><span class="assignment-number">01</span><span class="assignment-name">Exercise 1</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="3rd_lesson/week%203-2/exercise-2.html"><span class="assignment-number">02</span><span class="assignment-name">Exercise 2</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="3rd_lesson/week%203-2/exercise-3.html"><span class="assignment-number">03</span><span class="assignment-name">Exercise 3</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="3rd_lesson/week%203-2/exercise-4.html"><span class="assignment-number">04</span><span class="assignment-name">Exercise 4</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="3rd_lesson/week%203-2/exercise-5.html"><span class="assignment-number">05</span><span class="assignment-name">Exercise 5</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="3rd_lesson/week%203-2/exercise-6.html"><span class="assignment-number">06</span><span class="assignment-name">Exercise 6</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="3rd_lesson/week%203-2/Exercise-7.html"><span class="assignment-number">07</span><span class="assignment-name">Exercise 7</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+      </ol>
+
+      <div class="section-heading">
+        <h2>Week 4</h2>
+        <p class="section-label">4 assignments</p>
+      </div>
+      <ol class="assignment-list">
+        <li><a class="assignment-link" href="4th%20week/ex1_week4.html"><span class="assignment-number">01</span><span class="assignment-name">Exercise 1</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="4th%20week/ex2_week4.html"><span class="assignment-number">02</span><span class="assignment-name">Exercise 2</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="4th%20week/ex3_week4.html"><span class="assignment-number">03</span><span class="assignment-name">Exercise 3</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+        <li><a class="assignment-link" href="4th%20week/wx4_week4.html"><span class="assignment-number">04</span><span class="assignment-name">Exercise 4</span><span class="assignment-arrow" aria-hidden="true">↗</span></a></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>Web Development · Coursework Review</p>
+    <p>19 assignments</p>
+  </footer>
+</body>
+</html>
